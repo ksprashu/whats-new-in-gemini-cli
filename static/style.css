@@ -1,0 +1,35 @@
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #101922;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #233648;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #374b5e;
+}
+
+/* Optional fixes for Markdown elements inside the Tailwind Prose container */
+.prose code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+.prose pre {
+    background-color: #0d1117 !important;
+}
+
+.prose pre code {
+    background-color: transparent !important;
+    padding: 0;
+}

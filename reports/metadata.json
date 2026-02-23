@@ -1,0 +1,1196 @@
+{
+  "v0.29.0_2160014482": {
+    "title": "Plan Mode: A new comprehensive planning capability with /plan, enter_plan_mode tool, and dedicated d",
+    "version": "v0.29.0",
+    "status": "Pending",
+    "file": "reports/v0.29.0_2160014482.md"
+  },
+  "v0.29.0_4023700919": {
+    "title": "Gemini 3 Default: We\u2019ve removed the preview flag and enabled Gemini 3 by default for all users (#184",
+    "version": "v0.29.0",
+    "status": "Pending",
+    "file": "reports/v0.29.0_4023700919.md"
+  },
+  "v0.29.0_3309681797": {
+    "title": "Extension Exploration: New UI and settings to explore and manage extensions more easily (#18686 by @",
+    "version": "v0.29.0",
+    "status": "Pending",
+    "file": "reports/v0.29.0_3309681797.md"
+  },
+  "v0.29.0_2281266566": {
+    "title": "Admin Control: Administrators can now allowlist specific MCP server configurations (#18311 by @skesh",
+    "version": "v0.29.0",
+    "status": "Pending",
+    "file": "reports/v0.29.0_2281266566.md"
+  },
+  "v0.28.0_2352501831": {
+    "title": "Slash Command: We\u2019ve added a new /prompt-suggest slash command to help you generate prompt suggestio",
+    "version": "v0.28.0",
+    "status": "Pending",
+    "file": "reports/v0.28.0_2352501831.md"
+  },
+  "v0.28.0_953564955": {
+    "title": "IDE Support: Gemini CLI now supports the Positron IDE (#15047 by @kapsner).",
+    "version": "v0.28.0",
+    "status": "Pending",
+    "file": "reports/v0.28.0_953564955.md"
+  },
+  "v0.28.0_3545148380": {
+    "title": "Customization: You can now use custom themes in extensions, and we\u2019ve implemented automatic theme sw",
+    "version": "v0.28.0",
+    "status": "Pending",
+    "file": "reports/v0.28.0_3545148380.md"
+  },
+  "v0.28.0_2611381346": {
+    "title": "Authentication: We\u2019ve added interactive and non-interactive consent for OAuth, and you can now inclu",
+    "version": "v0.28.0",
+    "status": "Pending",
+    "file": "reports/v0.28.0_2611381346.md"
+  },
+  "v0.27.0_3681098847": {
+    "title": "Event-Driven Architecture: The CLI now uses a new event-driven scheduler for tool execution, resulti",
+    "version": "v0.27.0",
+    "status": "Pending",
+    "file": "reports/v0.27.0_3681098847.md"
+  },
+  "v0.27.0_2305791373": {
+    "title": "Enhanced User Experience: This release includes queued tool confirmations, and expandable large text",
+    "version": "v0.27.0",
+    "status": "Pending",
+    "file": "reports/v0.27.0_2305791373.md"
+  },
+  "v0.27.0_1316103239": {
+    "title": "New /rewind Command: Easily navigate your session history with the new /rewind command (#15720 by @A",
+    "version": "v0.27.0",
+    "status": "Pending",
+    "file": "reports/v0.27.0_1316103239.md"
+  },
+  "v0.27.0_4027684195": {
+    "title": "Linux Clipboard Support: You can now paste images on Linux with Wayland and X11 (#17144 by @devr0306",
+    "version": "v0.27.0",
+    "status": "Pending",
+    "file": "reports/v0.27.0_4027684195.md"
+  },
+  "v0.26.0_3383897178": {
+    "title": "Agents and Skills: We\u2019ve introduced a new skill-creator skill (#16394 by @NTaylorMullen), enabled ag",
+    "version": "v0.26.0",
+    "status": "Pending",
+    "file": "reports/v0.26.0_3383897178.md"
+  },
+  "v0.26.0_1033132818": {
+    "title": "UI/UX Improvements: You can now \u201cRewind\u201d through your conversation history (#15717 by @Adib234) and ",
+    "version": "v0.26.0",
+    "status": "Pending",
+    "file": "reports/v0.26.0_1033132818.md"
+  },
+  "v0.26.0_3093326065": {
+    "title": "Core and Scheduler Refactoring: The core scheduler has been significantly refactored to improve perf",
+    "version": "v0.26.0",
+    "status": "Pending",
+    "file": "reports/v0.26.0_3093326065.md"
+  },
+  "v0.25.0_1954831388": {
+    "title": "Skills and Agents Improvements: We\u2019ve enhanced the activate_skill tool, added a new pr-creator skill",
+    "version": "v0.25.0",
+    "status": "Pending",
+    "file": "reports/v0.25.0_1954831388.md"
+  },
+  "v0.25.0_1781187755": {
+    "title": "UI/UX Refinements: You\u2019ll notice more transparent feedback for skills (#15954 by @NTaylorMullen), th",
+    "version": "v0.25.0",
+    "status": "Pending",
+    "file": "reports/v0.25.0_1781187755.md"
+  },
+  "v0.25.0_3149641356": {
+    "title": "Core Functionality & Performance: This release includes support for built-in agent skills (#16045 by",
+    "version": "v0.25.0",
+    "status": "Pending",
+    "file": "reports/v0.25.0_3149641356.md"
+  },
+  "v0.25.0_3683890766": {
+    "title": "Bug Fixes and Stability: We\u2019ve squashed numerous bugs across the CLI, core, and workflows, addressin",
+    "version": "v0.25.0",
+    "status": "Pending",
+    "file": "reports/v0.25.0_3683890766.md"
+  },
+  "v0.24.0_2067251437": {
+    "title": "Agent Skills: We\u2019ve introduced significant advancements in Agent Skills. This includes initial docum",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_2067251437.md"
+  },
+  "v0.24.0_1853810642": {
+    "title": "Improved UI/UX: The user interface has received several updates, featuring visual indicators for hoo",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_1853810642.md"
+  },
+  "v0.24.0_3221083945": {
+    "title": "Enhanced Security: Security has been a major focus, with default folder trust now set to untrusted f",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_3221083945.md"
+  },
+  "v0.24.0_792598698": {
+    "title": "Core Functionality: This release includes a mandatory MessageBus injection, marking Phase 3 of a har",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_792598698.md"
+  },
+  "v0.24.0_1191610786": {
+    "title": "Terminal Features: Terminal interactions are more seamless with new features like OSC 52 paste suppo",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_1191610786.md"
+  },
+  "v0.24.0_285079354": {
+    "title": "New Commands: To manage the new features, we\u2019ve added several new commands: /agents refresh to updat",
+    "version": "v0.24.0",
+    "status": "Pending",
+    "file": "reports/v0.24.0_285079354.md"
+  },
+  "v0.23.0_1989185886": {
+    "title": "\ud83c\udf89 Experimental Agent Skills Support in Preview: Gemini CLI now supports Agent Skills in our preview ",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_1989185886.md"
+  },
+  "v0.23.0_2869194409": {
+    "title": "Install Preview: npm install -g @google/gemini-cli@preview",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_2869194409.md"
+  },
+  "v0.23.0_1777972675": {
+    "title": "Enable in /settings",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_1777972675.md"
+  },
+  "v0.23.0_1531606405": {
+    "title": "Docs: https://geminicli.com/docs/cli/skills/",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_1531606405.md"
+  },
+  "v0.23.0_3362217034": {
+    "title": "Gemini CLI wrapped: Run npx gemini-wrapped to visualize your usage stats, top models, languages, and",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_3362217034.md"
+  },
+  "v0.23.0_1167362177": {
+    "title": "Windows clipboard image support: Windows users can now paste images directly from their clipboard in",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_1167362177.md"
+  },
+  "v0.23.0_927153435": {
+    "title": "Terminal background color detection: Automatically optimizes your terminal\u2019s background color to sel",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_927153435.md"
+  },
+  "v0.23.0_1129341068": {
+    "title": "Session logout: Use the new /logout command to instantly clear credentials and reset your authentica",
+    "version": "v0.23.0",
+    "status": "Pending",
+    "file": "reports/v0.23.0_1129341068.md"
+  },
+  "v0.22.0_2454269044": {
+    "title": "\ud83c\udf89Free Tier + Gemini 3: Free tier users now all have access to Gemini 3 Pro & Flash. Enable in /setti",
+    "version": "v0.22.0",
+    "status": "Pending",
+    "file": "reports/v0.22.0_2454269044.md"
+  },
+  "v0.22.0_2548574192": {
+    "title": "\ud83c\udf89Gemini CLI + Colab: Gemini CLI is now pre-installed. Can be used headlessly in notebook cells or in",
+    "version": "v0.22.0",
+    "status": "Pending",
+    "file": "reports/v0.22.0_2548574192.md"
+  },
+  "v0.22.0_626058075": {
+    "title": "\ud83c\udf89Gemini CLI Extensions:   Conductor: Planning++, Gemini works with you to build out a detailed plan,",
+    "version": "v0.22.0",
+    "status": "Pending",
+    "file": "reports/v0.22.0_626058075.md"
+  },
+  "v0.22.0_823158753": {
+    "title": "Conductor: Planning++, Gemini works with you to build out a detailed plan, pull in extra details as ",
+    "version": "v0.22.0",
+    "status": "Pending",
+    "file": "reports/v0.22.0_823158753.md"
+  },
+  "v0.22.0_1363999461": {
+    "title": "Endor Labs: Perform code analysis, vulnerability scanning, and dependency checks using natural langu",
+    "version": "v0.22.0",
+    "status": "Pending",
+    "file": "reports/v0.22.0_1363999461.md"
+  },
+  "v0.21.0_3583050295": {
+    "title": "\u26a1\ufe0f\u26a1\ufe0f\u26a1\ufe0f Gemini 3 Flash + Gemini CLI: Better, faster and cheaper than 2.5 Pro - and in some scenarios ",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_3583050295.md"
+  },
+  "v0.21.0_157902419": {
+    "title": "For more information: Gemini 3 Flash is now available in Gemini CLI.",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_157902419.md"
+  },
+  "v0.21.0_1527770925": {
+    "title": "\ud83c\udf89 Gemini CLI Extensions:  Rill: Utilize natural language to analyze Rill data, enabling the explorat",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_1527770925.md"
+  },
+  "v0.21.0_1479288286": {
+    "title": "Rill: Utilize natural language to analyze Rill data, enabling the exploration of metrics and trends ",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_1479288286.md"
+  },
+  "v0.21.0_3538749605": {
+    "title": "Browserbase: Interact with web pages, take screenshots, extract information, and perform automated a",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_3538749605.md"
+  },
+  "v0.21.0_2266923849": {
+    "title": "Quota Visibility: The /stats command now displays quota information for all available models, includ",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_2266923849.md"
+  },
+  "v0.21.0_2680501241": {
+    "title": "Fuzzy Setting Search: Users can now quickly find settings using fuzzy search within the settings dia",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_2680501241.md"
+  },
+  "v0.21.0_1112735894": {
+    "title": "MCP Resource Support: Users can now discover, view, and search through resources using the @ command",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_1112735894.md"
+  },
+  "v0.21.0_2193817747": {
+    "title": "Auto-execute Simple Slash Commands: Simple slash commands are now executed immediately on enter. (@j",
+    "version": "v0.21.0",
+    "status": "Pending",
+    "file": "reports/v0.21.0_2193817747.md"
+  },
+  "v0.20.0_134128298": {
+    "title": "Multi-file Drag & Drop: Users can now drag and drop multiple files into the terminal, and the CLI wi",
+    "version": "v0.20.0",
+    "status": "Pending",
+    "file": "reports/v0.20.0_134128298.md"
+  },
+  "v0.20.0_1717197529": {
+    "title": "Persistent \u201cAlways Allow\u201d Policies: Users can now save \u201cAlways Allow\u201d decisions for tool executions,",
+    "version": "v0.20.0",
+    "status": "Pending",
+    "file": "reports/v0.20.0_1717197529.md"
+  },
+  "v0.19.0_2135787814": {
+    "title": "\ud83c\udf89 New extensions:  Eleven Labs: Create, play, manage your audio play tracks with the Eleven Labs Gem",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_2135787814.md"
+  },
+  "v0.19.0_3687770967": {
+    "title": "Eleven Labs: Create, play, manage your audio play tracks with the Eleven Labs Gemini CLI extension: ",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_3687770967.md"
+  },
+  "v0.19.0_1272813439": {
+    "title": "Zed integration: Users can now leverage Gemini 3 within the Zed integration after enabling \u201cPreview ",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_1272813439.md"
+  },
+  "v0.19.0_2709402411": {
+    "title": "Interactive shell:  Click-to-Focus: When \u201cUse Alternate Buffer\u201d setting is enabled, users can click ",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_2709402411.md"
+  },
+  "v0.19.0_2908121994": {
+    "title": "Click-to-Focus: When \u201cUse Alternate Buffer\u201d setting is enabled, users can click within the embedded ",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_2908121994.md"
+  },
+  "v0.19.0_179376600": {
+    "title": "Loading phrase: Clearly indicates when the interactive shell is awaiting user input. (vid, pr by @ja",
+    "version": "v0.19.0",
+    "status": "Pending",
+    "file": "reports/v0.19.0_179376600.md"
+  },
+  "v0.18.0_1426427550": {
+    "title": "\ud83c\udf89 New extensions:  Google Workspace: Integrate Gemini CLI with your Workspace data. Write docs, buil",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_1426427550.md"
+  },
+  "v0.18.0_2926685820": {
+    "title": "Google Workspace: Integrate Gemini CLI with your Workspace data. Write docs, build slides, chat with",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_2926685820.md"
+  },
+  "v0.18.0_858399865": {
+    "title": "Blog: https://allen.hutchison.org/2025/11/19/bringing-the-office-to-the-terminal/",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_858399865.md"
+  },
+  "v0.18.0_1618405418": {
+    "title": "Redis: Manage and search data in Redis with natural language: gemini extensions install https://gith",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_1618405418.md"
+  },
+  "v0.18.0_2978998136": {
+    "title": "Anomalo: Query your data warehouse table metadata and quality status through commands and natural la",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_2978998136.md"
+  },
+  "v0.18.0_258077410": {
+    "title": "Experimental permission improvements: We are now experimenting with a new policy engine in Gemini CL",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_258077410.md"
+  },
+  "v0.18.0_2922058670": {
+    "title": "Blog: https://allen.hutchison.org/2025/11/26/the-guardrails-of-autonomy/",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_2922058670.md"
+  },
+  "v0.18.0_166858390": {
+    "title": "Gemini 3 support for paid: Gemini 3 support has been rolled out to all API key, Google AI Pro or Goo",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_166858390.md"
+  },
+  "v0.18.0_482798481": {
+    "title": "Updated UI rollback: We\u2019ve temporarily rolled back our updated UI to give it more time to bake. This",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_482798481.md"
+  },
+  "v0.18.0_4014771759": {
+    "title": "Model in history: Users can now toggle in /settings to display model in their chat history. (gif, pr",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_4014771759.md"
+  },
+  "v0.18.0_2856660787": {
+    "title": "Multi-uninstall: Users can now uninstall multiple extensions with a single command. (pic, pr by @Jay",
+    "version": "v0.18.0",
+    "status": "Pending",
+    "file": "reports/v0.18.0_2856660787.md"
+  },
+  "v0.16.0_607025262": {
+    "title": "Gemini 3 + Gemini CLI: launch \ud83d\ude80\ud83d\ude80\ud83d\ude80",
+    "version": "v0.16.0",
+    "status": "Pending",
+    "file": "reports/v0.16.0_607025262.md"
+  },
+  "v0.16.0_1737987116": {
+    "title": "Data Commons Gemini CLI Extension - A new Data Commons Gemini CLI extension that lets you query open",
+    "version": "v0.16.0",
+    "status": "Pending",
+    "file": "reports/v0.16.0_1737987116.md"
+  },
+  "v0.15.0_2143407775": {
+    "title": "\ud83c\udf89 Seamless scrollable UI and mouse support: We\u2019ve given Gemini CLI a major facelift to make your ter",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_2143407775.md"
+  },
+  "v0.15.0_3847234390": {
+    "title": "Announcement: https://developers.googleblog.com/en/making-the-terminal-beautiful-one-pixel-at-a-time",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_3847234390.md"
+  },
+  "v0.15.0_55745389": {
+    "title": "\ud83c\udf89 New partner extensions:   Arize: Seamlessly instrument AI applications with Arize AX and grant dir",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_55745389.md"
+  },
+  "v0.15.0_359687372": {
+    "title": "Arize: Seamlessly instrument AI applications with Arize AX and grant direct access to Arize support:",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_359687372.md"
+  },
+  "v0.15.0_4101060224": {
+    "title": "Chronosphere: Retrieve logs, metrics, traces, events, and specific entities: gemini extensions insta",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_4101060224.md"
+  },
+  "v0.15.0_3633651510": {
+    "title": "Transmit: Comprehensive context, validation, and automated fixes for creating production-ready authe",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_3633651510.md"
+  },
+  "v0.15.0_3255589072": {
+    "title": "Todo planning: Complex questions now get broken down into todo lists that the model can manage and c",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_3255589072.md"
+  },
+  "v0.15.0_2166371783": {
+    "title": "Disable GitHub extensions: Users can now prevent the installation and loading of extensions from Git",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_2166371783.md"
+  },
+  "v0.15.0_3470663618": {
+    "title": "Extensions restart: Users can now explicitly restart extensions using the /extensions restart comman",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_3470663618.md"
+  },
+  "v0.15.0_586093513": {
+    "title": "Better Angular support: Angular workflows should now be more seamless (pr by @MarkTechson).",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_586093513.md"
+  },
+  "v0.15.0_2519542759": {
+    "title": "Validate command: Users can now check that local extensions are formatted correctly. (pr by @kevinjw",
+    "version": "v0.15.0",
+    "status": "Pending",
+    "file": "reports/v0.15.0_2519542759.md"
+  },
+  "v0.12.0_4037832219": {
+    "title": "\ud83c\udf89 New partner extensions:   \ud83e\udd17 Hugging Face extension: Access the Hugging Face hub. (gif) gemini exte",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_4037832219.md"
+  },
+  "v0.12.0_3186219895": {
+    "title": "\ud83e\udd17 Hugging Face extension: Access the Hugging Face hub. (gif) gemini extensions install https://githu",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_3186219895.md"
+  },
+  "v0.12.0_2937651469": {
+    "title": "Monday.com extension: Analyze your sprints, update your task boards, etc. (gif) gemini extensions in",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_2937651469.md"
+  },
+  "v0.12.0_1250575048": {
+    "title": "Data Commons extension: Query public datasets or ground responses on data from Data Commons (gif). g",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_1250575048.md"
+  },
+  "v0.12.0_2882146525": {
+    "title": "Model selection: Choose the Gemini model for your session with /model. (pic, pr by @abhipatel12).",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_2882146525.md"
+  },
+  "v0.12.0_217616594": {
+    "title": "Model routing: Gemini CLI will now intelligently pick the best model for the task. Simple queries wi",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_217616594.md"
+  },
+  "v0.12.0_76252980": {
+    "title": "Discussion: https://github.com/google-gemini/gemini-cli/discussions/12375",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_76252980.md"
+  },
+  "v0.12.0_3302737925": {
+    "title": "Codebase investigator subagent: We now have a new built-in subagent that will explore your workspace",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_3302737925.md"
+  },
+  "v0.12.0_2063681463": {
+    "title": "Enable, disable, or limit turns in /settings, plus advanced configs in settings.json (pic, pr by @si",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_2063681463.md"
+  },
+  "v0.12.0_3754874706": {
+    "title": "Explore extensions with /extension: Users can now open the extensions page in their default browser ",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_3754874706.md"
+  },
+  "v0.12.0_2330544493": {
+    "title": "Configurable compression: Users can modify the compression threshold in /settings. The default has b",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_2330544493.md"
+  },
+  "v0.12.0_618646874": {
+    "title": "API key authentication: Users can now securely enter and store their Gemini API key via a new dialog",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_618646874.md"
+  },
+  "v0.12.0_2185834338": {
+    "title": "Sequential approval: Users can now approve multiple tool calls sequentially during execution. (pr by",
+    "version": "v0.12.0",
+    "status": "Pending",
+    "file": "reports/v0.12.0_2185834338.md"
+  },
+  "v0.11.0_1754522916": {
+    "title": "\ud83c\udf89 Gemini CLI Jules Extension: Use Gemini CLI to orchestrate Jules. Spawn remote workers, delegate te",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_1754522916.md"
+  },
+  "v0.11.0_2372098661": {
+    "title": "Install: gemini extensions install https://github.com/gemini-cli-extensions/jules",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_2372098661.md"
+  },
+  "v0.11.0_2505484986": {
+    "title": "Announcement: https://developers.googleblog.com/en/introducing-the-jules-extension-for-gemini-cli/",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_2505484986.md"
+  },
+  "v0.11.0_2429259035": {
+    "title": "Stream JSON output: Stream real-time JSONL events with --output-format stream-json to monitor AI age",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_2429259035.md"
+  },
+  "v0.11.0_4265204985": {
+    "title": "Markdown toggle: Users can now switch between rendered and raw markdown display using alt+m or ctrl+",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_4265204985.md"
+  },
+  "v0.11.0_3756209773": {
+    "title": "Queued message editing: Users can now quickly edit queued messages by pressing the up arrow key when",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_3756209773.md"
+  },
+  "v0.11.0_3981522083": {
+    "title": "JSON web fetch: Non-HTML content like JSON APIs or raw source code are now properly shown to the mod",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_3981522083.md"
+  },
+  "v0.11.0_2079920231": {
+    "title": "Non-interactive MCP commands: Users can now run MCP slash commands in non-interactive mode gemini \"/",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_2079920231.md"
+  },
+  "v0.11.0_4284727419": {
+    "title": "Removal of deprecated flags: We\u2019ve finally removed a number of deprecated flags to cleanup Gemini CL",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_4284727419.md"
+  },
+  "v0.11.0_843348422": {
+    "title": "--all-files / -a in favor of @ from within Gemini CLI. (pr by @allenhutchison)",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_843348422.md"
+  },
+  "v0.11.0_1030400864": {
+    "title": "--telemetry-* flags in favor of environment variables (pr by @allenhutchison)",
+    "version": "v0.11.0",
+    "status": "Pending",
+    "file": "reports/v0.11.0_1030400864.md"
+  },
+  "v0.10.0_1245339046": {
+    "title": "Polish: The team has been heads down bug fixing and investing heavily into polishing existing flows,",
+    "version": "v0.10.0",
+    "status": "Pending",
+    "file": "reports/v0.10.0_1245339046.md"
+  },
+  "v0.10.0_1541946321": {
+    "title": "Interactive Shell Tool calling: Gemini CLI can now also execute interactive tools if needed (pr by @",
+    "version": "v0.10.0",
+    "status": "Pending",
+    "file": "reports/v0.10.0_1541946321.md"
+  },
+  "v0.10.0_2598875173": {
+    "title": "Alt+Key support: Enables broader support for Alt+Key keyboard shortcuts across different terminals. ",
+    "version": "v0.10.0",
+    "status": "Pending",
+    "file": "reports/v0.10.0_2598875173.md"
+  },
+  "v0.10.0_3247794263": {
+    "title": "Telemetry Diff stats: Track line changes made by the model and user during file operations via OTEL.",
+    "version": "v0.10.0",
+    "status": "Pending",
+    "file": "reports/v0.10.0_3247794263.md"
+  },
+  "v0.9.0_670847647": {
+    "title": "\ud83c\udf89 Interactive Shell: Run interactive commands like vim, rebase -i, or even gemini \ud83d\ude0e directly in Gemi",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_670847647.md"
+  },
+  "v0.9.0_3570762675": {
+    "title": "Blog: https://developers.googleblog.com/en/say-hello-to-a-new-level-of-interactivity-in-gemini-cli/",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_3570762675.md"
+  },
+  "v0.9.0_1752141721": {
+    "title": "Install pre-release extensions: Install the latest --pre-release versions of extensions. Used for wh",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_1752141721.md"
+  },
+  "v0.9.0_4108201046": {
+    "title": "Simplified extension creation: Create a new, empty extension. Templates are no longer required. (pr ",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_4108201046.md"
+  },
+  "v0.9.0_1433803494": {
+    "title": "OpenTelemetry GenAI metrics: Aligns telemetry with industry-standard semantic conventions for improv",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_1433803494.md"
+  },
+  "v0.9.0_131299473": {
+    "title": "List memory files: Quickly find the location of your long-term memory files with /memory list. (pr b",
+    "version": "v0.9.0",
+    "status": "Pending",
+    "file": "reports/v0.9.0_131299473.md"
+  },
+  "v0.8.0_745605832": {
+    "title": "\ud83c\udf89 Announcing Gemini CLI Extensions \ud83c\udf89  Completely customize your Gemini CLI experience to fit your wo",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_745605832.md"
+  },
+  "v0.8.0_2428923156": {
+    "title": "Completely customize your Gemini CLI experience to fit your workflow.",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2428923156.md"
+  },
+  "v0.8.0_286539617": {
+    "title": "Build and share your own Gemini CLI extensions with the world.",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_286539617.md"
+  },
+  "v0.8.0_3418346743": {
+    "title": "Launching with a growing catalog of community, partner, and Google-built extensions.  Check extensio",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_3418346743.md"
+  },
+  "v0.8.0_4250634727": {
+    "title": "Check extensions from key launch partners.",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_4250634727.md"
+  },
+  "v0.8.0_2899308626": {
+    "title": "Easy install:  gemini extensions install <github url|folder path>",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2899308626.md"
+  },
+  "v0.8.0_4008145049": {
+    "title": "gemini extensions install <github url|folder path>",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_4008145049.md"
+  },
+  "v0.8.0_853134709": {
+    "title": "Easy management:  gemini extensions install|uninstall|link gemini extensions enable|disable gemini e",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_853134709.md"
+  },
+  "v0.8.0_128683343": {
+    "title": "gemini extensions install|uninstall|link",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_128683343.md"
+  },
+  "v0.8.0_1529479848": {
+    "title": "gemini extensions enable|disable",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_1529479848.md"
+  },
+  "v0.8.0_2233484962": {
+    "title": "gemini extensions list|update|new",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2233484962.md"
+  },
+  "v0.8.0_2511280019": {
+    "title": "Or use commands while running with /extensions list|update.",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2511280019.md"
+  },
+  "v0.8.0_523394019": {
+    "title": "Everything you need to know: Now open for building: Introducing Gemini CLI extensions.",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_523394019.md"
+  },
+  "v0.8.0_710428879": {
+    "title": "\ud83c\udf89 Our New Home Page & Better Documentation \ud83c\udf89  Check out our new home page for better getting started",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_710428879.md"
+  },
+  "v0.8.0_2798380383": {
+    "title": "Check out our new home page for better getting started material, reference documentation, extensions",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2798380383.md"
+  },
+  "v0.8.0_4246738489": {
+    "title": "Homepage: https://geminicli.com",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_4246738489.md"
+  },
+  "v0.8.0_2203182108": {
+    "title": "\u203c\ufe0fNEW documentation: https://geminicli.com/docs (Have any suggestions?)",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2203182108.md"
+  },
+  "v0.8.0_1145482278": {
+    "title": "Extensions: https://geminicli.com/extensions",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_1145482278.md"
+  },
+  "v0.8.0_1784148018": {
+    "title": "Non-Interactive Allowed Tools: --allowed-tools will now also work in non-interactive mode. (pr by @m",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_1784148018.md"
+  },
+  "v0.8.0_1150213294": {
+    "title": "Terminal Title Status: See the CLI\u2019s real-time status and thoughts directly in the terminal window\u2019s",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_1150213294.md"
+  },
+  "v0.8.0_2876571136": {
+    "title": "Small features, polish, reliability & bug fixes: A large amount of changes, smaller features, UI upd",
+    "version": "v0.8.0",
+    "status": "Pending",
+    "file": "reports/v0.8.0_2876571136.md"
+  },
+  "v0.7.0_2844530504": {
+    "title": "\ud83c\udf89Build your own Gemini CLI IDE plugin: We\u2019ve published a spec for creating IDE plugins to enable ric",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_2844530504.md"
+  },
+  "v0.7.0_747189764": {
+    "title": "\ud83c\udf89 Gemini CLI extensions  Flutter: An early version to help you create, build, test, and run Flutter ",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_747189764.md"
+  },
+  "v0.7.0_828482858": {
+    "title": "Flutter: An early version to help you create, build, test, and run Flutter apps with Gemini CLI (ext",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_828482858.md"
+  },
+  "v0.7.0_43377649": {
+    "title": "nanobanana: Integrate nanobanana into Gemini CLI (extension)",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_43377649.md"
+  },
+  "v0.7.0_1885246627": {
+    "title": "Telemetry config via environment: Manage telemetry settings using environment variables for a more f",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_1885246627.md"
+  },
+  "v0.7.0_3077699748": {
+    "title": "\u200b\u200bExperimental todos: Track and display progress on complex tasks with a managed checklist. Off by d",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_3077699748.md"
+  },
+  "v0.7.0_3906895661": {
+    "title": "Share chat support for tools: Using /chat share will now also render function calls and responses in",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_3906895661.md"
+  },
+  "v0.7.0_1932084752": {
+    "title": "Citations: Now enabled for all users (pr by @scidomino)",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_1932084752.md"
+  },
+  "v0.7.0_445966056": {
+    "title": "Custom commands in Headless Mode: Run custom slash commands directly from the command line in non-in",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_445966056.md"
+  },
+  "v0.7.0_2876571136": {
+    "title": "Small features, polish, reliability & bug fixes: A large amount of changes, smaller features, UI upd",
+    "version": "v0.7.0",
+    "status": "Pending",
+    "file": "reports/v0.7.0_2876571136.md"
+  },
+  "v0.6.0_1544197335": {
+    "title": "\ud83c\udf89 Higher limits for Google AI Pro and Ultra subscribers: We\u2019re psyched to finally announce that Goog",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_1544197335.md"
+  },
+  "v0.6.0_2759235154": {
+    "title": "Announcement: https://blog.google/technology/developers/gemini-cli-code-assist-higher-limits/",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_2759235154.md"
+  },
+  "v0.6.0_697875979": {
+    "title": "\ud83c\udf89Gemini CLI Databases and BigQuery Extensions: Connect Gemini CLI to all of your cloud data with Gem",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_697875979.md"
+  },
+  "v0.6.0_3763728819": {
+    "title": "Announcement and how to get started with each of the below extensions: https://cloud.google.com/blog",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_3763728819.md"
+  },
+  "v0.6.0_1546736102": {
+    "title": "AlloyDB: Interact, manage and observe AlloyDB for PostgreSQL databases (manage, observe)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_1546736102.md"
+  },
+  "v0.6.0_733477423": {
+    "title": "BigQuery: Connect and query your BigQuery datasets or utilize a sub-agent for contextual insights (q",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_733477423.md"
+  },
+  "v0.6.0_4174986940": {
+    "title": "Cloud SQL: Interact, manage and observe Cloud SQL for PostgreSQL (manage, observe), Cloud SQL for My",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_4174986940.md"
+  },
+  "v0.6.0_367930377": {
+    "title": "Dataplex: Discover, manage, and govern data and AI artifacts (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_367930377.md"
+  },
+  "v0.6.0_1528261593": {
+    "title": "Firestore: Interact with Firestore databases, collections and documents (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_1528261593.md"
+  },
+  "v0.6.0_3199672706": {
+    "title": "Looker: Query data, run Looks and create dashboards (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_3199672706.md"
+  },
+  "v0.6.0_3007185540": {
+    "title": "MySQL: Interact with MySQL databases (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_3007185540.md"
+  },
+  "v0.6.0_2577968058": {
+    "title": "Postgres: Interact with PostgreSQL databases (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_2577968058.md"
+  },
+  "v0.6.0_3249617024": {
+    "title": "Spanner: Interact with Spanner databases (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_3249617024.md"
+  },
+  "v0.6.0_2956878605": {
+    "title": "SQL Server: Interact with SQL Server databases (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_2956878605.md"
+  },
+  "v0.6.0_2267072764": {
+    "title": "MCP Toolbox: Configure and load custom tools for more than 30+ data sources (extension)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_2267072764.md"
+  },
+  "v0.6.0_3863809954": {
+    "title": "JSON output mode: Have Gemini CLI output JSON with --output-format json when invoked headlessly for ",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_3863809954.md"
+  },
+  "v0.6.0_4116626743": {
+    "title": "Keybinding triggered approvals: When you use shortcuts (shift+y or shift+tab) to activate YOLO/auto-",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_4116626743.md"
+  },
+  "v0.6.0_1929581368": {
+    "title": "Chat sharing: Convert the current conversation to a Markdown or JSON file with /chat share <file.md|",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_1929581368.md"
+  },
+  "v0.6.0_1117698167": {
+    "title": "Prompt search: Search your prompt history using ctrl+r. (pr by @Aisha630)",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_1117698167.md"
+  },
+  "v0.6.0_879871737": {
+    "title": "Input undo/redo: Recover accidentally deleted text in the input prompt using ctrl+z (undo) and ctrl+",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_879871737.md"
+  },
+  "v0.6.0_104837098": {
+    "title": "Loop detection confirmation: When loops are detected you are now presented with a dialog to disable ",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_104837098.md"
+  },
+  "v0.6.0_4131566358": {
+    "title": "Direct to Google Cloud Telemetry: Directly send telemetry to Google Cloud for a simpler and more str",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_4131566358.md"
+  },
+  "v0.6.0_780691794": {
+    "title": "Visual Mode Indicator Revamp: \u2018shell\u2019, \u2018accept edits\u2019 and \u2018yolo\u2019 modes now have colors to match thei",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_780691794.md"
+  },
+  "v0.6.0_2876571136": {
+    "title": "Small features, polish, reliability & bug fixes: A large amount of changes, smaller features, UI upd",
+    "version": "v0.6.0",
+    "status": "Pending",
+    "file": "reports/v0.6.0_2876571136.md"
+  },
+  "v0.5.0_3129224810": {
+    "title": "\ud83c\udf89FastMCP + Gemini CLI\ud83c\udf89: Quickly install and manage your Gemini CLI MCP servers with FastMCP (video, ",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_3129224810.md"
+  },
+  "v0.5.0_2389008525": {
+    "title": "Getting started: https://gofastmcp.com/integrations/gemini-cli",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_2389008525.md"
+  },
+  "v0.5.0_2617253762": {
+    "title": "Positional Prompt for Non-Interactive: Seamlessly invoke Gemini CLI headlessly via gemini \"Hello\". S",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_2617253762.md"
+  },
+  "v0.5.0_1116379443": {
+    "title": "Experimental Tool output truncation: Enable truncating shell tool outputs and saving full output to ",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_1116379443.md"
+  },
+  "v0.5.0_4255885037": {
+    "title": "Edit Tool improvements: Gemini CLI\u2019s ability to edit files should now be far more capable. (pr by @s",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_4255885037.md"
+  },
+  "v0.5.0_3936592347": {
+    "title": "Custom witty messages: The feature you\u2019ve all been waiting for\u2026 Personalized witty loading messages ",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_3936592347.md"
+  },
+  "v0.5.0_2614398613": {
+    "title": "Nested .gitignore File Handling: Nested .gitignore files are now respected. (pr by @gsquared94)",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_2614398613.md"
+  },
+  "v0.5.0_2003023058": {
+    "title": "Enforced authentication: System administrators can now mandate a specific authentication method via ",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_2003023058.md"
+  },
+  "v0.5.0_3696119823": {
+    "title": "A2A development-tool extension: An RFC for an Agent2Agent (A2A) powered extension for developer tool",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_3696119823.md"
+  },
+  "v0.5.0_4265795085": {
+    "title": "**Hands on Codelab: **https://codelabs.developers.google.com/gemini-cli-hands-on",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_4265795085.md"
+  },
+  "v0.5.0_2876571136": {
+    "title": "Small features, polish, reliability & bug fixes: A large amount of changes, smaller features, UI upd",
+    "version": "v0.5.0",
+    "status": "Pending",
+    "file": "reports/v0.5.0_2876571136.md"
+  },
+  "v0.4.0_3251623638": {
+    "title": "\ud83c\udf89Gemini CLI CloudRun and Security Integrations\ud83c\udf89: Automate app deployment and security analysis with ",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_3251623638.md"
+  },
+  "v0.4.0_165969948": {
+    "title": "Announcement and how to get started: https://cloud.google.com/blog/products/ai-machine-learning/auto",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_165969948.md"
+  },
+  "v0.4.0_2710623709": {
+    "title": "Experimental  Edit Tool: Give our new edit tool a try by setting \"useSmartEdit\": true in settings.js",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2710623709.md"
+  },
+  "v0.4.0_2559895653": {
+    "title": "Edit Tool: Give our new edit tool a try by setting \"useSmartEdit\": true in settings.json! (feedback,",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2559895653.md"
+  },
+  "v0.4.0_2306386330": {
+    "title": "Model talking to itself fix: We\u2019ve removed a model workaround that would encourage Gemini CLI to con",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2306386330.md"
+  },
+  "v0.4.0_2762820064": {
+    "title": "Prompt completion: Get real-time AI suggestions to complete your prompts as you type. Enable it with",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2762820064.md"
+  },
+  "v0.4.0_62706117": {
+    "title": "Footer visibility configuration: Customize the CLI\u2019s footer look and feel in settings.json (pr by @m",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_62706117.md"
+  },
+  "v0.4.0_2200083925": {
+    "title": "hideCWD: hide current working directory.",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2200083925.md"
+  },
+  "v0.4.0_766497854": {
+    "title": "hideSandboxStatus: hide sandbox status.",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_766497854.md"
+  },
+  "v0.4.0_1738728846": {
+    "title": "hideModelInfo: hide current model information.",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_1738728846.md"
+  },
+  "v0.4.0_4047033038": {
+    "title": "hideContextSummary: hide request context summary.",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_4047033038.md"
+  },
+  "v0.4.0_4251528674": {
+    "title": "Citations: For enterprise Code Assist licenses users will now see citations in their responses by de",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_4251528674.md"
+  },
+  "v0.4.0_1340017870": {
+    "title": "Pro Quota Dialog: Handle daily Pro model usage limits with an interactive dialog that lets you immed",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_1340017870.md"
+  },
+  "v0.4.0_1638799595": {
+    "title": "Custom commands @: Embed local file or directory content directly into your custom command prompts u",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_1638799595.md"
+  },
+  "v0.4.0_2363327024": {
+    "title": "2.5 Flash Lite support: You can now use the gemini-2.5-flash-lite model for Gemini CLI via gemini -m",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2363327024.md"
+  },
+  "v0.4.0_1415160102": {
+    "title": "CLI streamlining: We have deprecated a number of command line arguments in favor of settings.json\u00a0al",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_1415160102.md"
+  },
+  "v0.4.0_2795302830": {
+    "title": "JSON session summary: Track and save detailed CLI session statistics to a JSON file for performance ",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2795302830.md"
+  },
+  "v0.4.0_3493741747": {
+    "title": "Robust keyboard handling: More reliable and consistent behavior for arrow keys, special keys (Home, ",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_3493741747.md"
+  },
+  "v0.4.0_3574707563": {
+    "title": "MCP loading indicator: Provides visual feedback during CLI initialization when connecting to multipl",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_3574707563.md"
+  },
+  "v0.4.0_2876571136": {
+    "title": "Small features, polish, reliability & bug fixes: A large amount of changes, smaller features, UI upd",
+    "version": "v0.4.0",
+    "status": "Pending",
+    "file": "reports/v0.4.0_2876571136.md"
+  }
+}

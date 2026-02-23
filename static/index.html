@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gemini CLI Updates Dashboard</title>
+    <!-- Google Fonts: Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Highlight.js for code block syntax highlighting -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <!-- Marked library for parsing markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0b5db0",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a2632",
+                        "border-dark": "#233648",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display h-screen flex flex-col overflow-hidden">
+    <!-- Top Header -->
+    <header
+        class="flex-none w-full border-b border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark z-20">
+        <div class="px-6 py-5 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex flex-col gap-1">
+                <h1 class="text-3xl font-bold leading-tight tracking-tight flex items-center gap-2">
+                    <span>🚀</span> What's New in Gemini CLI
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Deep dives into the latest features
+                    based on PRs and Changelogs</p>
+            </div>
+            <button id="sync-btn"
+                class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-5 rounded-lg transition-colors shadow-lg shadow-primary/20">
+                <span class="material-symbols-outlined text-[20px]">sync</span>
+                <span>Sync with Changelog</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <main class="flex flex-1 overflow-hidden">
+        <!-- Left Sidebar (30%) -->
+        <aside
+            class="w-full md:w-[320px] lg:w-[380px] flex flex-col border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-[#151f2b] flex-shrink-0 relative">
+
+            <!-- Loading overlay for sidebar -->
+            <div id="sidebar-loading"
+                class="hidden absolute inset-0 bg-[#151f2b]/80 backdrop-blur-sm z-50 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            </div>
+
+            <!-- Version List -->
+            <div id="report-list" class="flex-1 overflow-y-auto p-3 space-y-2 relative">
+                <!-- Cards will be injected here by script.js -->
+            </div>
+        </aside>
+
+        <!-- Right Content (70%) -->
+        <section
+            class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
+            <!-- Loading overlay for main content -->
+            <div id="content-loading"
+                class="hidden absolute inset-0 bg-background-dark/80 backdrop-blur-sm z-50 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto custom-scrollbar">
+                <div class="max-w-4xl mx-auto px-8 py-10 pb-32">
+
+                    <div id="welcome-message" class="text-center mt-20 text-slate-500">
+                        <span class="material-symbols-outlined text-6xl mb-4 opacity-50">data_object</span>
+                        <h2 class="text-2xl font-bold">Select a report from the sidebar</h2>
+                        <p>To view the detailed deep dive.</p>
+                    </div>
+
+                    <div id="content-container" class="hidden">
+                        <!-- Content Header -->
+                        <div class="mb-8 border-b border-gray-200 dark:border-border-dark pb-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span id="report-version"
+                                    class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">v?.?.?</span>
+
+                                <span id="status-indicator"
+                                    class="ml-auto flex items-center gap-1 text-green-500 text-sm font-medium bg-green-500/10 px-2 py-1 rounded">
+                                    <span class="material-symbols-outlined text-[16px]">check_circle</span> Stable
+                                </span>
+                            </div>
+                            <h2 id="report-title" class="text-4xl font-bold text-slate-900 dark:text-white mb-2">Title
+                            </h2>
+                        </div>
+
+                        <!-- Markdown Content using Tailwind Typography plugin -->
+                        <div id="content-viewer"
+                            class="prose dark:prose-invert max-w-none prose-pre:bg-[#0d1117] prose-pre:border prose-pre:border-border-dark prose-p:text-slate-300">
+                            <!-- Injected markdown will go here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Action Footer -->
+            <div id="action-footer"
+                class="hidden absolute bottom-0 left-0 w-full bg-white/80 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-200 dark:border-border-dark p-6 flex justify-between items-center z-20">
+                <div class="flex items-center gap-2">
+                    <span id="footer-status-text" class="text-sm text-slate-400 ml-2">Currently viewing</span>
+                </div>
+                <button id="mark-done-btn"
+                    class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined">check</span>
+                    <span>Mark as Done</span>
+                </button>
+            </div>
+
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

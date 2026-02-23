@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gemini CLI Updates Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0b5db0",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1a2632",
+                        "border-dark": "#233648",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #233648; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #374b5e; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display h-screen flex flex-col overflow-hidden">
+<!-- Top Header -->
+<header class="flex-none w-full border-b border-gray-200 dark:border-border-dark bg-white dark:bg-background-dark z-20">
+<div class="px-6 py-5 flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-bold leading-tight tracking-tight flex items-center gap-2">
+<span>🚀</span> What's New in Gemini CLI
+                </h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Deep dives into the latest features based on PRs and Changelogs</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-5 rounded-lg transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+<span>Sync with Changelog</span>
+</button>
+</div>
+</header>
+<!-- Main Layout -->
+<main class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar (30%) -->
+<aside class="w-full md:w-[320px] lg:w-[380px] flex flex-col border-r border-gray-200 dark:border-border-dark bg-gray-50 dark:bg-[#151f2b] flex-shrink-0">
+<!-- Search Bar -->
+<div class="p-4 border-b border-gray-200 dark:border-border-dark sticky top-0 z-10 bg-inherit backdrop-blur-sm">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-2.5 border-none rounded-lg leading-5 bg-white dark:bg-surface-dark text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm shadow-sm" placeholder="Search versions (e.g., v0.29)..." type="text"/>
+</div>
+</div>
+<!-- Version List -->
+<div class="flex-1 overflow-y-auto p-3 space-y-2">
+<!-- Active Item -->
+<div class="group relative flex flex-col gap-2 p-4 rounded-xl cursor-pointer bg-white dark:bg-surface-dark border border-primary/50 shadow-md ring-1 ring-primary/20">
+<div class="absolute right-4 top-4">
+<div class="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded px-2 py-0.5 text-xs font-medium bg-primary/20 text-primary border border-primary/20">
+                            v0.29.0
+                        </span>
+<span class="text-xs text-slate-500 dark:text-slate-400">2 hours ago</span>
+</div>
+<h3 class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Multi-turn chat context</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Introduces persistent memory for chat sessions allowing for more complex interactions.</p>
+</div>
+<!-- Inactive Item -->
+<div class="group relative flex flex-col gap-2 p-4 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-border-dark transition-all duration-200">
+<div class="absolute right-4 top-4 opacity-50">
+<span class="material-symbols-outlined text-[18px] text-slate-500">check_circle</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded px-2 py-0.5 text-xs font-medium bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                            v0.28.5
+                        </span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Yesterday</span>
+</div>
+<h3 class="text-base font-medium text-slate-700 dark:text-slate-200 group-hover:text-primary transition-colors line-clamp-1">Fix auth token persistence</h3>
+<p class="text-sm text-slate-500 dark:text-slate-500 line-clamp-2">Resolved an issue where the CLI would forget authentication tokens after system restart.</p>
+</div>
+<!-- Inactive Item -->
+<div class="group relative flex flex-col gap-2 p-4 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-border-dark transition-all duration-200">
+<div class="absolute right-4 top-4 opacity-50">
+<span class="material-symbols-outlined text-[18px] text-slate-500">check_circle</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded px-2 py-0.5 text-xs font-medium bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                            v0.28.0
+                        </span>
+<span class="text-xs text-slate-500 dark:text-slate-400">2 days ago</span>
+</div>
+<h3 class="text-base font-medium text-slate-700 dark:text-slate-200 group-hover:text-primary transition-colors line-clamp-1">Image input support</h3>
+<p class="text-sm text-slate-500 dark:text-slate-500 line-clamp-2">Added support for multimodal inputs including png, jpg and webp formats via the console.</p>
+</div>
+<!-- Inactive Item -->
+<div class="group relative flex flex-col gap-2 p-4 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-surface-dark border border-transparent hover:border-gray-200 dark:hover:border-border-dark transition-all duration-200">
+<div class="absolute right-4 top-4 opacity-50">
+<span class="material-symbols-outlined text-[18px] text-slate-500">check_circle</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center rounded px-2 py-0.5 text-xs font-medium bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+                           v0.27.2
+                       </span>
+<span class="text-xs text-slate-500 dark:text-slate-400">5 days ago</span>
+</div>
+<h3 class="text-base font-medium text-slate-700 dark:text-slate-200 group-hover:text-primary transition-colors line-clamp-1">Stream response optimization</h3>
+<p class="text-sm text-slate-500 dark:text-slate-500 line-clamp-2">Improved latency for streaming responses by optimizing buffer handling.</p>
+</div>
+</div>
+</aside>
+<!-- Right Content (70%) -->
+<section class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="max-w-4xl mx-auto px-8 py-10 pb-32">
+<!-- Content Header -->
+<div class="mb-8 border-b border-gray-200 dark:border-border-dark pb-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">v0.29.0</span>
+<span class="text-slate-400 text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> Released Oct 24, 2023
+                            </span>
+<span class="ml-auto flex items-center gap-1 text-green-500 text-sm font-medium bg-green-500/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Stable
+                            </span>
+</div>
+<h2 class="text-4xl font-bold text-slate-900 dark:text-white mb-2">Multi-turn chat context</h2>
+<p class="text-lg text-slate-500 dark:text-slate-400 font-light">
+                            Maintain context across multiple prompts in your terminal session.
+                        </p>
+</div>
+<!-- Markdown Content -->
+<div class="prose dark:prose-invert max-w-none space-y-8">
+<!-- Section: Summary -->
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-gray-200 dark:border-border-dark shadow-sm">
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span> Feature Summary
+                            </h3>
+<p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                                This update introduces persistent memory for chat sessions. Previously, the CLI treated every prompt as a new session. With v0.29.0, the CLI now leverages local caching to store conversation history, allowing for more natural, multi-turn dialogues directly from your command line.
+                            </p>
+<ul class="space-y-2 text-slate-600 dark:text-slate-300 list-disc list-inside marker:text-primary">
+<li><strong>Session Persistence:</strong> Context is saved automatically in <code>~/.gemini/sessions</code>.</li>
+<li><strong>Context Flags:</strong> New flags to clear or resume specific sessions.</li>
+<li><strong>Token Optimization:</strong> Smart truncation of old history to manage context window limits.</li>
+</ul>
+</div>
+<!-- Section: Background -->
+<div class="flex gap-4 p-5 rounded-xl bg-primary/5 dark:bg-primary/10 border-l-4 border-primary">
+<div class="flex-shrink-0 pt-1">
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Background &amp; Context</h4>
+<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                    Many developers requested the ability to refine code generation iteratively without re-pasting previous snippets. This PR (#402) implements a lightweight sliding window context manager that balances token usage with conversation coherence.
+                                </p>
+</div>
+</div>
+<!-- Section: How To Guide -->
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">How-To Guide</h3>
+<p class="text-slate-600 dark:text-slate-300 mb-4">
+                                To start a new interactive session, simply use the <code>chat</code> command without arguments.
+                            </p>
+<div class="relative group rounded-lg overflow-hidden border border-gray-200 dark:border-border-dark bg-[#0d1117]">
+<div class="flex justify-between items-center px-4 py-2 bg-[#161b22] border-b border-gray-800">
+<span class="text-xs text-slate-400 font-mono">Terminal</span>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="p-4 overflow-x-auto">
+<pre class="font-mono text-sm text-slate-300 leading-relaxed"><span class="text-purple-400">$</span> gemini chat --new
+<span class="text-green-400">?</span> <span class="font-bold text-white">Starting new session: sess_01HG8...</span>
+
+<span class="text-blue-400">You:</span> Write a Python function to calculate Fibonacci numbers.
+<span class="text-yellow-400">Gemini:</span> Here is a simple recursive implementation...
+
+<span class="text-blue-400">You:</span> Now make it iterative.
+<span class="text-yellow-400">Gemini:</span> Sure! Here is the iterative version...
+</pre>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-300 mt-6 mb-4">
+                                You can also resume a specific session by ID:
+                            </p>
+<div class="relative group rounded-lg overflow-hidden border border-gray-200 dark:border-border-dark bg-[#0d1117]">
+<div class="p-4 overflow-x-auto">
+<pre class="font-mono text-sm text-slate-300 leading-relaxed"><span class="text-purple-400">$</span> gemini chat --resume sess_01HG8
+</pre>
+</div>
+</div>
+</div>
+<!-- Contributors Section -->
+<div class="pt-6 border-t border-gray-200 dark:border-border-dark mt-8">
+<h4 class="text-sm uppercase tracking-wider text-slate-500 font-bold mb-4">Contributors</h4>
+<div class="flex -space-x-2">
+<img alt="Contributor 1" class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark" data-alt="Avatar of contributor Felix" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxDkk6cYxiGyJ1AD41rcOo-GQqQDJuXrZQHtwY0UioE_ir5DSAPjLwi8srmPPVMa_ZAjFcnU9O9-aQgSMu1yEoHlnGUv-OMfyWBndMoVm13fvkvZeBGV43X0SC-xYIqtrLLjWC7fpf4fSuSshPFJU4ZCHThMEJaANsonsYyMIOf1Yq3dbsKKheT2QPm5Ul5gFzVsAmDHIV7KprHmnFIfrUc_JnoN6SG9mQ-f7Cs5rX8LYvEUEoa8Rw1JJdCZgO0RUBMYBvNsJOxecA"/>
+<img alt="Contributor 2" class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark" data-alt="Avatar of contributor Aneka" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB94WVl3e9Ig_KTWIEfjfhBGSft8HvowX7BIXq_1zyd-t51QNJ4kgaMSvvM23oM7DT-x02rCBFcTkYZV5neBJgn9mi7NGTeWK5h_U5zMq_HNKPrrtCfsEltkbIxn2SeTL0sZxlPxxMr5mG1eqIAHI2-k4WcAnFClvXSuH3-eugxbvtEogiI0HT6sxgHgtr7dAwggqBNvPEn-cXjhMhkCuW3uMQUvd4uJh2cAdGX2c-hxJkmcrds9FnQGmfgJAawo7Nguf7PJmD7tYx2"/>
+<img alt="Contributor 3" class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark" data-alt="Avatar of contributor Zack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk78U-yIpEExXVYCC4BY_dzJmD_mQ-AAVDuWJTgfEPTZzKORDAgl80nOay03w5k6cO0TJSB0DYxqyucjs50XHk4OUavBuqUVesM67Qf4jobxqrF7kqKso8ZnpRvqxOshXOYGVYrvXG4te0xvDjAenwipKeg5cMnrJbzldmSt7UvGTy642JWIhuBirhfQBmRTboHM2SmQ30YSJXirps8leSlNhCEdxJFWj_NVRzK0A02QHpooLRlbgd6VeWKQyB6AeSH-wZBKzsu_8f"/>
+<div class="w-8 h-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-500 dark:text-slate-300">
+                                    +2
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Action Footer -->
+<div class="absolute bottom-0 left-0 w-full bg-white/80 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-200 dark:border-border-dark p-6 flex justify-between items-center z-20">
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="Previous Version">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" title="Next Version">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<span class="text-sm text-slate-500 ml-2">Reading 1 of 4 unread updates</span>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5">
+<span class="material-symbols-outlined">check</span>
+<span>Mark as Done</span>
+</button>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,20 @@
+[project]
+name = "whats-new-in-gemini-cli"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115.0",
+    "google-adk>=1.25.1",
+    "google-genai>=1.64.0",
+    "httpx>=0.28.1",
+    "pytest>=9.0.2",
+    "selectolax>=0.4.6",
+    "uvicorn>=0.32.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "cli",
+]
