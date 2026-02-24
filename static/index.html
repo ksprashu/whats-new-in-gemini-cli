@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<!--
+ Copyright 2026 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
 <html class="dark" lang="en">
 
 <head>
@@ -58,11 +74,12 @@
                 <p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Deep dives into the latest features
                     based on PRs and Changelogs</p>
             </div>
-            <button id="sync-btn"
-                class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-2.5 px-5 rounded-lg transition-colors shadow-lg shadow-primary/20">
-                <span class="material-symbols-outlined text-[20px]">sync</span>
-                <span>Sync with Changelog</span>
-            </button>
+            <div class="flex items-center gap-3">
+                <div
+                    class="bg-primary/10 px-3 py-1.5 rounded-lg flex items-center text-sm font-bold text-primary border border-primary/20">
+                    Public Dashboard
+                </div>
+            </div>
         </div>
     </header>
 
@@ -109,9 +126,11 @@
                                 <span id="report-version"
                                     class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">v?.?.?</span>
 
+                                <span id="report-date"
+                                    class="text-sm font-medium text-slate-500 dark:text-slate-400">YYYY-MM-DD</span>
+
                                 <span id="status-indicator"
-                                    class="ml-auto flex items-center gap-1 text-green-500 text-sm font-medium bg-green-500/10 px-2 py-1 rounded">
-                                    <span class="material-symbols-outlined text-[16px]">check_circle</span> Stable
+                                    class="ml-auto flex items-center gap-1 text-sm font-medium px-2 py-1 rounded">
                                 </span>
                             </div>
                             <h2 id="report-title" class="text-4xl font-bold text-slate-900 dark:text-white mb-2">Title
@@ -127,18 +146,7 @@
                 </div>
             </div>
 
-            <!-- Sticky Action Footer -->
-            <div id="action-footer"
-                class="hidden absolute bottom-0 left-0 w-full bg-white/80 dark:bg-background-dark/90 backdrop-blur-md border-t border-gray-200 dark:border-border-dark p-6 flex justify-between items-center z-20">
-                <div class="flex items-center gap-2">
-                    <span id="footer-status-text" class="text-sm text-slate-400 ml-2">Currently viewing</span>
-                </div>
-                <button id="mark-done-btn"
-                    class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
-                    <span class="material-symbols-outlined">check</span>
-                    <span>Mark as Done</span>
-                </button>
-            </div>
+
 
         </section>
     </main>
