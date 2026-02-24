@@ -1,0 +1,31 @@
+server {
+    listen ${PORT};
+    server_name localhost;
+
+    root /usr/share/nginx/html;
+    # Inject INDEX_PAGE so Admin maps to admin.html and Public maps to index.html
+    index ${INDEX_PAGE};
+
+    # Serve static files directly
+    location / {
+        try_files $uri $uri/ /${INDEX_PAGE};
+    }
+
+    # Proxy API requests to the backend Cloud Run service
+    location /api/ {
+        # The API_URL comes from the Cloud Run environment variable
+        # We rewrite the URI so /api/... is sent as /api/... to the backend
+        proxy_pass ${API_URL}/api/;
+        
+        # Inject the Admin API Key securely at the server level.
+        # If ADMIN_API_KEY is empty (Public UI), this just sends "Bearer " which the backend ignores.
+        # The browser frontend NEVER sees this key.
+        proxy_set_header Authorization "Bearer ${ADMIN_API_KEY}";
+        
+        # Standard proxy headers
+        proxy_set_header Host $proxy_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
