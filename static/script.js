@@ -50,20 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Authentication Helper
     const getAuthHeaders = () => {
         let headers = {};
-
-        // Only attempt to attach auth if we are actually on the admin page
-        if (window.location.pathname.includes('admin.html') || viewAdminBtn) {
-            let apiKey = sessionStorage.getItem('ADMIN_API_KEY');
-            if (!apiKey) {
-                apiKey = prompt("Please enter the ADMIN_API_KEY to access restricted features:");
-                if (apiKey) {
-                    sessionStorage.setItem('ADMIN_API_KEY', apiKey);
-                }
-            }
-            if (apiKey) {
-                headers['Authorization'] = `Bearer ${apiKey}`;
-            }
-        }
+        // The admin proxy automatically injects the Authorization header.
+        // We no longer need to prompt the user or store it in sessionStorage.
         return headers;
     };
 
@@ -182,8 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch(`${API_BASE}/reports`, { headers: getAuthHeaders() });
 
             if (res.status === 401) {
-                sessionStorage.removeItem('ADMIN_API_KEY');
-                alert("Unauthorized or Token Expired. Please supply a valid ADMIN_API_KEY.");
+                alert("Unauthorized. This action requires admin privileges.");
                 return;
             }
             currentReports = await res.json();
@@ -342,20 +329,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync Action
     if (syncBtn) {
         syncBtn.addEventListener('click', async () => {
+            const originalIconHtml = syncBtn.innerHTML;
             try {
                 toggleSidebarLoading(true);
-                const originalIconHtml = syncBtn.innerHTML;
                 syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Syncing...</span>';
 
                 const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: false }) });
                 if (!res.ok) throw new Error('Sync failed');
 
-                await loadReportList(currentSelectedId); // Refresh list
+                await loadReportList(currentSelectedId); // Refresh list immediately just in case
+
+                alert("Sync started in background. The list will update automatically over the next few minutes.");
+
+                let polls = 0;
+                const pollInterval = setInterval(async () => {
+                    polls++;
+                    await loadReportList(currentSelectedId);
+                    if (polls >= 36) { // 3 minutes polling (5s * 36)
+                        clearInterval(pollInterval);
+                        syncBtn.innerHTML = originalIconHtml;
+                        toggleSidebarLoading(false);
+                    }
+                }, 5000);
             } catch (error) {
                 console.error('Sync failed:', error);
                 alert("Failed to sync with changelog. Please check backend.");
-            } finally {
-                syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">sync</span><span>Sync</span>';
+                syncBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
         });
@@ -364,20 +363,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch More Action
     if (fetchMoreBtn) {
         fetchMoreBtn.addEventListener('click', async () => {
+            const originalIconHtml = fetchMoreBtn.innerHTML;
             try {
                 toggleSidebarLoading(true);
-                const originalIconHtml = fetchMoreBtn.innerHTML;
                 fetchMoreBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Fetching...</span>';
 
                 const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: true }) });
                 if (!res.ok) throw new Error('Fetch More failed');
 
-                await loadReportList(currentSelectedId); // Refresh list
+                await loadReportList(currentSelectedId); // Refresh list immediately just in case
+
+                alert("Fetch more started in background. The list will update automatically over the next few minutes.");
+
+                let polls = 0;
+                const pollInterval = setInterval(async () => {
+                    polls++;
+                    await loadReportList(currentSelectedId);
+                    if (polls >= 36) { // 3 minutes polling (5s * 36)
+                        clearInterval(pollInterval);
+                        fetchMoreBtn.innerHTML = originalIconHtml;
+                        toggleSidebarLoading(false);
+                    }
+                }, 5000);
             } catch (error) {
                 console.error('Fetch More failed:', error);
                 alert("Failed to fetch more logs. Please check backend.");
-            } finally {
-                fetchMoreBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span><span>Fetch More</span>';
+                fetchMoreBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
         });
