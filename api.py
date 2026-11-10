@@ -89,15 +89,21 @@ from pydantic import BaseModel
 class SyncRequest(BaseModel):
     fetch_more: bool = False
 
+from fastapi import BackgroundTasks
+
 @app.post("/api/sync")
-def sync_changelog(request: Request, sync_req: SyncRequest = SyncRequest()):
+def sync_changelog(request: Request, background_tasks: BackgroundTasks, sync_req: SyncRequest = SyncRequest()):
     verify_admin(request)
     # Call the main script to sync
-    cmd = ["python", "main.py", "--check"]
+    cmd = ["python", "-u", "main.py", "--check"]
     if sync_req.fetch_more:
         cmd.append("--fetch-more")
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    return {"status": "success", "output": result.stdout, "error": result.stderr}
+        
+    def run_sync_cmd():
+        subprocess.run(cmd, capture_output=True, text=True)
+        
+    background_tasks.add_task(run_sync_cmd)
+    return {"status": "success", "message": "Synchronization started in the background."}
 
 # Mount static files. We will create a static folder in the next step.
 os.makedirs("static", exist_ok=True)

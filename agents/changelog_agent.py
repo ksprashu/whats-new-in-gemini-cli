@@ -16,7 +16,7 @@ import re
 import hashlib
 from typing import List, Dict
 from utils.scraper import fetch_html, parse_html
-from utils.storage import is_processed
+from utils.storage import is_processed, get_reports
 
 CHANGELOG_URL = "https://geminicli.com/docs/changelogs/"
 
@@ -27,14 +27,14 @@ class ChangelogAgent:
     def get_latest_features(self, fetch_more: bool = False) -> List[Dict]:
         """
         Scrapes the changelog and returns a list of features with their PR links.
-        If fetch_more is True, skips all previously processed items and grabs the next 10.
-        Otherwise, grabs the latest 10 items, stopping if an already processed item is found.
+        If fetch_more is True, grabs the 10 items *older* than the oldest processed item.
+        Otherwise, grabs the latest items up to 10, stopping at the first processed item.
         """
-        html = fetch_html(self.url)
+        html = fetch_html(self.url, use_cache=False)
         parser = parse_html(html)
         
-        features = []
-        skip_mode = fetch_more
+        all_features = []
+        processed_reports = get_reports()
         
         # Find all h2 headers that match "Announcements: v..."
         for h2 in parser.css("h2"):
@@ -44,8 +44,6 @@ class ChangelogAgent:
                 version = version_match.group(1)
                 date = version_match.group(2)
                 
-                # The h2 is wrapped in a div. The ul is a sibling of that div.
-                # In selectolax, we can find the next sibling of the parent.
                 next_node = h2.parent.next
                 while next_node and next_node.tag != "ul":
                     next_node = next_node.next
@@ -53,7 +51,6 @@ class ChangelogAgent:
                 if next_node and next_node.tag == "ul":
                     for li in next_node.css("li"):
                         feature_text = li.text().strip().replace("\n", " ")
-                        # Extract PR links from the li
                         pr_links = []
                         for a in li.css("a"):
                             href = a.attributes.get("href", "")
@@ -63,34 +60,44 @@ class ChangelogAgent:
                         feature_hash = hashlib.sha256(feature_text.encode('utf-8')).hexdigest()[:8]
                         feature_id = f"{version}_{feature_hash}"
                         
-                        processed = is_processed(feature_id)
-                        
-                        if skip_mode:
-                            if processed:
-                                continue # Keep skipping until we find an unprocessed one
-                            else:
-                                skip_mode = False # Found the start of unprocessed items, stop skipping
-                        else:
-                            if processed and not fetch_more:
-                                # Standard mode: stop at the first processed item
-                                return features
-                            elif processed and fetch_more:
-                                # Defensive: should not hit this due to skip_mode, but just in case
-                                continue
-
-                        # If we reach here, we are not skipping and the item is not processed
-                        features.append({
+                        all_features.append({
                             "version": version,
                             "date": date,
                             "text": feature_text,
                             "pr_links": pr_links,
                             "id": feature_id
                         })
-                        
-                        if len(features) >= 10:
-                            return features
-        
-        return features
+
+        if not fetch_more:
+            # Fetch Latest: Take items until we hit a processed one, max 10
+            new_features = []
+            for f in all_features:
+                if f["id"] in processed_reports:
+                    break
+                new_features.append(f)
+                if len(new_features) >= 10:
+                    break
+            return new_features
+        else:
+            # Fetch More: Find the oldest (highest index) processed item we know
+            oldest_processed_idx = -1
+            for i, f in enumerate(all_features):
+                if f["id"] in processed_reports:
+                    oldest_processed_idx = i
+            
+            new_features = []
+            if oldest_processed_idx == -1:
+                # None processed? Just return first 10
+                start_idx = 0
+            else:
+                start_idx = oldest_processed_idx + 1
+            
+            for f in all_features[start_idx:]:
+                if f["id"] not in processed_reports:
+                    new_features.append(f)
+                if len(new_features) >= 10:
+                    break
+            return new_features
 
 if __name__ == "__main__":
     agent = ChangelogAgent()
