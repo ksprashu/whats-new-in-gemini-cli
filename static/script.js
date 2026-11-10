@@ -41,18 +41,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSelectedId = null;
     let currentMarkdownData = '';
     let currentViewMode = 'public'; // 'public' or 'admin'
+    let isSyncPolling = false;
 
     // DOM Elements for extra buttons
     const viewPublicBtn = document.getElementById('view-public');
     const viewAdminBtn = document.getElementById('view-admin');
     const fetchMoreBtn = document.getElementById('fetch-more-btn');
 
-    // Authentication Helper
+    // Authentication Helper: attaches stored bearer token when running directly without an admin proxy
     const getAuthHeaders = () => {
-        let headers = {};
-        // The admin proxy automatically injects the Authorization header.
-        // We no longer need to prompt the user or store it in sessionStorage.
+        const headers = {};
+        const apiKey = sessionStorage.getItem('ADMIN_API_KEY');
+        if (apiKey) {
+            headers['Authorization'] = `Bearer ${apiKey}`;
+        }
         return headers;
+    };
+
+    const fetchWithAdminAuth = async (url, options = {}) => {
+        const mergedHeaders = { ...(options.headers || {}), ...getAuthHeaders() };
+        let res = await fetch(url, { ...options, headers: mergedHeaders });
+        if (res.status === 401) {
+            sessionStorage.removeItem('ADMIN_API_KEY');
+            const suppliedKey = prompt("Enter ADMIN_API_KEY to authorize this admin action:");
+            if (suppliedKey) {
+                sessionStorage.setItem('ADMIN_API_KEY', suppliedKey);
+                const retryHeaders = { ...(options.headers || {}), ...getAuthHeaders() };
+                res = await fetch(url, { ...options, headers: retryHeaders });
+            }
+        }
+        return res;
     };
 
     // Configure marked with syntax highlighting
@@ -191,7 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to load reports:', error);
             reportListContainer.innerHTML = `<div class="p-4 text-sm text-red-500">Error loading reports. Backend might be down.</div>`;
         } finally {
-            toggleSidebarLoading(false);
+            if (!isSyncPolling) {
+                toggleSidebarLoading(false);
+            }
         }
     };
 
@@ -318,9 +338,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (viewAdminBtn) {
-        viewAdminBtn.addEventListener('click', () => {
+        viewAdminBtn.addEventListener('click', async () => {
             if (currentViewMode !== 'admin') {
                 currentViewMode = 'admin';
+                if (currentSelectedId && !currentMarkdownData.includes('<!-- === ADMIN === -->') && !sessionStorage.getItem('ADMIN_API_KEY')) {
+                    const suppliedKey = prompt("Enter ADMIN_API_KEY to view restricted admin notes (leave blank if behind an authenticated proxy):");
+                    if (suppliedKey) {
+                        sessionStorage.setItem('ADMIN_API_KEY', suppliedKey);
+                    }
+                }
+                if (currentSelectedId) {
+                    await loadReportContent(currentSelectedId);
+                }
                 updateViewToggleState();
             }
         });
@@ -329,15 +358,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync Action
     if (syncBtn) {
         syncBtn.addEventListener('click', async () => {
+            if (isSyncPolling) return;
             const originalIconHtml = syncBtn.innerHTML;
             try {
+                isSyncPolling = true;
                 toggleSidebarLoading(true);
                 syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Syncing...</span>';
 
-                const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: false }) });
+                const res = await fetchWithAdminAuth(`${API_BASE}/sync`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fetch_more: false })
+                });
                 if (!res.ok) throw new Error('Sync failed');
 
-                await loadReportList(currentSelectedId); // Refresh list immediately just in case
+                await loadReportList(currentSelectedId);
 
                 alert("Sync started in background. The list will update automatically over the next few minutes.");
 
@@ -347,6 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     await loadReportList(currentSelectedId);
                     if (polls >= 36) { // 3 minutes polling (5s * 36)
                         clearInterval(pollInterval);
+                        isSyncPolling = false;
                         syncBtn.innerHTML = originalIconHtml;
                         toggleSidebarLoading(false);
                     }
@@ -354,6 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Sync failed:', error);
                 alert("Failed to sync with changelog. Please check backend.");
+                isSyncPolling = false;
                 syncBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
@@ -363,15 +400,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch More Action
     if (fetchMoreBtn) {
         fetchMoreBtn.addEventListener('click', async () => {
+            if (isSyncPolling) return;
             const originalIconHtml = fetchMoreBtn.innerHTML;
             try {
+                isSyncPolling = true;
                 toggleSidebarLoading(true);
                 fetchMoreBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Fetching...</span>';
 
-                const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: true }) });
+                const res = await fetchWithAdminAuth(`${API_BASE}/sync`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fetch_more: true })
+                });
                 if (!res.ok) throw new Error('Fetch More failed');
 
-                await loadReportList(currentSelectedId); // Refresh list immediately just in case
+                await loadReportList(currentSelectedId);
 
                 alert("Fetch more started in background. The list will update automatically over the next few minutes.");
 
@@ -381,6 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     await loadReportList(currentSelectedId);
                     if (polls >= 36) { // 3 minutes polling (5s * 36)
                         clearInterval(pollInterval);
+                        isSyncPolling = false;
                         fetchMoreBtn.innerHTML = originalIconHtml;
                         toggleSidebarLoading(false);
                     }
@@ -388,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Fetch More failed:', error);
                 alert("Failed to fetch more logs. Please check backend.");
+                isSyncPolling = false;
                 fetchMoreBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
@@ -401,10 +446,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 toggleContentLoading(true);
-                const originalBtnHtml = markDoneBtn.innerHTML;
                 markDoneBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span><span>Saving...</span>';
 
-                const res = await fetch(`${API_BASE}/reports/${currentSelectedId}/done`, { method: 'POST', headers: getAuthHeaders() });
+                const res = await fetchWithAdminAuth(`${API_BASE}/reports/${currentSelectedId}/done`, { method: 'POST' });
                 if (!res.ok) throw new Error('Failed to mark as done');
 
                 // Reload list and stay on current report

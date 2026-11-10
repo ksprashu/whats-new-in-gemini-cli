@@ -16,7 +16,7 @@ import re
 import hashlib
 from typing import List, Dict
 from utils.scraper import fetch_html, parse_html
-from utils.storage import is_processed, get_reports
+from utils.storage import get_reports
 
 CHANGELOG_URL = "https://geminicli.com/docs/changelogs/"
 
@@ -68,36 +68,24 @@ class ChangelogAgent:
                             "id": feature_id
                         })
 
+        new_features = []
         if not fetch_more:
             # Fetch Latest: Take items until we hit a processed one, max 10
-            new_features = []
             for f in all_features:
                 if f["id"] in processed_reports:
                     break
                 new_features.append(f)
                 if len(new_features) >= 10:
                     break
-            return new_features
         else:
-            # Fetch More: Find the oldest (highest index) processed item we know
-            oldest_processed_idx = -1
-            for i, f in enumerate(all_features):
+            # Fetch More: Skip any already-processed items and take the next 10 unprocessed items
+            for f in all_features:
                 if f["id"] in processed_reports:
-                    oldest_processed_idx = i
-            
-            new_features = []
-            if oldest_processed_idx == -1:
-                # None processed? Just return first 10
-                start_idx = 0
-            else:
-                start_idx = oldest_processed_idx + 1
-            
-            for f in all_features[start_idx:]:
-                if f["id"] not in processed_reports:
-                    new_features.append(f)
+                    continue
+                new_features.append(f)
                 if len(new_features) >= 10:
                     break
-            return new_features
+        return new_features
 
 if __name__ == "__main__":
     agent = ChangelogAgent()
