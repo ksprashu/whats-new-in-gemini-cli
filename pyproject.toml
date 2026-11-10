@@ -29,8 +29,3 @@ dependencies = [
     "selectolax>=0.4.6",
     "uvicorn>=0.32.0",
 ]
-
-[tool.uv.workspace]
-members = [
-    "cli",
-]

@@ -41,30 +41,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSelectedId = null;
     let currentMarkdownData = '';
     let currentViewMode = 'public'; // 'public' or 'admin'
+    let isSyncPolling = false;
 
     // DOM Elements for extra buttons
     const viewPublicBtn = document.getElementById('view-public');
     const viewAdminBtn = document.getElementById('view-admin');
     const fetchMoreBtn = document.getElementById('fetch-more-btn');
 
-    // Authentication Helper
+    // Authentication Helper: attaches stored bearer token when running directly without an admin proxy
     const getAuthHeaders = () => {
-        let headers = {};
-
-        // Only attempt to attach auth if we are actually on the admin page
-        if (window.location.pathname.includes('admin.html') || viewAdminBtn) {
-            let apiKey = sessionStorage.getItem('ADMIN_API_KEY');
-            if (!apiKey) {
-                apiKey = prompt("Please enter the ADMIN_API_KEY to access restricted features:");
-                if (apiKey) {
-                    sessionStorage.setItem('ADMIN_API_KEY', apiKey);
-                }
-            }
-            if (apiKey) {
-                headers['Authorization'] = `Bearer ${apiKey}`;
-            }
+        const headers = {};
+        const apiKey = sessionStorage.getItem('ADMIN_API_KEY');
+        if (apiKey) {
+            headers['Authorization'] = `Bearer ${apiKey}`;
         }
         return headers;
+    };
+
+    const fetchWithAdminAuth = async (url, options = {}) => {
+        const mergedHeaders = { ...(options.headers || {}), ...getAuthHeaders() };
+        let res = await fetch(url, { ...options, headers: mergedHeaders });
+        if (res.status === 401) {
+            sessionStorage.removeItem('ADMIN_API_KEY');
+            const suppliedKey = prompt("Enter ADMIN_API_KEY to authorize this admin action:");
+            if (suppliedKey) {
+                sessionStorage.setItem('ADMIN_API_KEY', suppliedKey);
+                const retryHeaders = { ...(options.headers || {}), ...getAuthHeaders() };
+                res = await fetch(url, { ...options, headers: retryHeaders });
+            }
+        }
+        return res;
     };
 
     // Configure marked with syntax highlighting
@@ -182,8 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch(`${API_BASE}/reports`, { headers: getAuthHeaders() });
 
             if (res.status === 401) {
-                sessionStorage.removeItem('ADMIN_API_KEY');
-                alert("Unauthorized or Token Expired. Please supply a valid ADMIN_API_KEY.");
+                alert("Unauthorized. This action requires admin privileges.");
                 return;
             }
             currentReports = await res.json();
@@ -204,7 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Failed to load reports:', error);
             reportListContainer.innerHTML = `<div class="p-4 text-sm text-red-500">Error loading reports. Backend might be down.</div>`;
         } finally {
-            toggleSidebarLoading(false);
+            if (!isSyncPolling) {
+                toggleSidebarLoading(false);
+            }
         }
     };
 
@@ -331,9 +338,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (viewAdminBtn) {
-        viewAdminBtn.addEventListener('click', () => {
+        viewAdminBtn.addEventListener('click', async () => {
             if (currentViewMode !== 'admin') {
                 currentViewMode = 'admin';
+                if (currentSelectedId && !currentMarkdownData.includes('<!-- === ADMIN === -->') && !sessionStorage.getItem('ADMIN_API_KEY')) {
+                    const suppliedKey = prompt("Enter ADMIN_API_KEY to view restricted admin notes (leave blank if behind an authenticated proxy):");
+                    if (suppliedKey) {
+                        sessionStorage.setItem('ADMIN_API_KEY', suppliedKey);
+                    }
+                }
+                if (currentSelectedId) {
+                    await loadReportContent(currentSelectedId);
+                }
                 updateViewToggleState();
             }
         });
@@ -342,20 +358,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sync Action
     if (syncBtn) {
         syncBtn.addEventListener('click', async () => {
+            if (isSyncPolling) return;
+            const originalIconHtml = syncBtn.innerHTML;
             try {
+                isSyncPolling = true;
                 toggleSidebarLoading(true);
-                const originalIconHtml = syncBtn.innerHTML;
                 syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Syncing...</span>';
 
-                const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: false }) });
+                const res = await fetchWithAdminAuth(`${API_BASE}/sync`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fetch_more: false })
+                });
                 if (!res.ok) throw new Error('Sync failed');
 
-                await loadReportList(currentSelectedId); // Refresh list
+                await loadReportList(currentSelectedId);
+
+                alert("Sync started in background. The list will update automatically over the next few minutes.");
+
+                let polls = 0;
+                const pollInterval = setInterval(async () => {
+                    polls++;
+                    await loadReportList(currentSelectedId);
+                    if (polls >= 36) { // 3 minutes polling (5s * 36)
+                        clearInterval(pollInterval);
+                        isSyncPolling = false;
+                        syncBtn.innerHTML = originalIconHtml;
+                        toggleSidebarLoading(false);
+                    }
+                }, 5000);
             } catch (error) {
                 console.error('Sync failed:', error);
                 alert("Failed to sync with changelog. Please check backend.");
-            } finally {
-                syncBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">sync</span><span>Sync</span>';
+                isSyncPolling = false;
+                syncBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
         });
@@ -364,20 +400,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fetch More Action
     if (fetchMoreBtn) {
         fetchMoreBtn.addEventListener('click', async () => {
+            if (isSyncPolling) return;
+            const originalIconHtml = fetchMoreBtn.innerHTML;
             try {
+                isSyncPolling = true;
                 toggleSidebarLoading(true);
-                const originalIconHtml = fetchMoreBtn.innerHTML;
                 fetchMoreBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Fetching...</span>';
 
-                const res = await fetch(`${API_BASE}/sync`, { method: 'POST', headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' }, body: JSON.stringify({ fetch_more: true }) });
+                const res = await fetchWithAdminAuth(`${API_BASE}/sync`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fetch_more: true })
+                });
                 if (!res.ok) throw new Error('Fetch More failed');
 
-                await loadReportList(currentSelectedId); // Refresh list
+                await loadReportList(currentSelectedId);
+
+                alert("Fetch more started in background. The list will update automatically over the next few minutes.");
+
+                let polls = 0;
+                const pollInterval = setInterval(async () => {
+                    polls++;
+                    await loadReportList(currentSelectedId);
+                    if (polls >= 36) { // 3 minutes polling (5s * 36)
+                        clearInterval(pollInterval);
+                        isSyncPolling = false;
+                        fetchMoreBtn.innerHTML = originalIconHtml;
+                        toggleSidebarLoading(false);
+                    }
+                }, 5000);
             } catch (error) {
                 console.error('Fetch More failed:', error);
                 alert("Failed to fetch more logs. Please check backend.");
-            } finally {
-                fetchMoreBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">download</span><span>Fetch More</span>';
+                isSyncPolling = false;
+                fetchMoreBtn.innerHTML = originalIconHtml;
                 toggleSidebarLoading(false);
             }
         });
@@ -390,10 +446,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 toggleContentLoading(true);
-                const originalBtnHtml = markDoneBtn.innerHTML;
                 markDoneBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span><span>Saving...</span>';
 
-                const res = await fetch(`${API_BASE}/reports/${currentSelectedId}/done`, { method: 'POST', headers: getAuthHeaders() });
+                const res = await fetchWithAdminAuth(`${API_BASE}/reports/${currentSelectedId}/done`, { method: 'POST' });
                 if (!res.ok) throw new Error('Failed to mark as done');
 
                 // Reload list and stay on current report

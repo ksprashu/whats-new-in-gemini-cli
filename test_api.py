@@ -72,21 +72,71 @@ def test_get_report_file_missing(mock_get_reports, mock_exists):
     assert response.status_code == 404
     assert response.json() == {"detail": "Report file missing"}
 
+@patch.dict("os.environ", {"ADMIN_API_KEY": "test-secret"})
 @patch("api.mark_as_done")
 def test_set_report_done(mock_mark_as_done):
-    response = client.post("/api/reports/1/done")
+    response = client.post(
+        "/api/reports/1/done",
+        headers={"Authorization": "Bearer test-secret"}
+    )
     assert response.status_code == 200
     assert response.json() == {"status": "success"}
     mock_mark_as_done.assert_called_once_with("1")
 
+@patch.dict("os.environ", {"ADMIN_API_KEY": "test-secret"})
 @patch("api.subprocess.run")
 def test_sync_changelog_success(mock_run):
     mock_result = MagicMock()
+    mock_result.returncode = 0
     mock_result.stdout = "Sync success!"
     mock_result.stderr = ""
     mock_run.return_value = mock_result
-    
-    response = client.post("/api/sync")
+
+    response = client.post(
+        "/api/sync",
+        headers={"Authorization": "Bearer test-secret"},
+        json={"fetch_more": False}
+    )
     assert response.status_code == 200
-    assert response.json() == {"status": "success", "output": "Sync success!", "error": ""}
-    mock_run.assert_called_once_with(["python", "main.py", "--check"], capture_output=True, text=True)
+    assert response.json() == {
+        "status": "success",
+        "message": "Synchronization started in the background."
+    }
+    mock_run.assert_called_once_with(
+        ["python", "main.py", "--check"],
+        capture_output=True,
+        text=True,
+        timeout=300
+    )
+
+@patch.dict("os.environ", {"ADMIN_API_KEY": "test-secret"})
+def test_sync_changelog_conflict_when_locked():
+    from api import _sync_lock
+    assert _sync_lock.acquire(blocking=False)
+    try:
+        response = client.post(
+            "/api/sync",
+            headers={"Authorization": "Bearer test-secret"},
+            json={"fetch_more": False}
+        )
+        assert response.status_code == 409
+    finally:
+        _sync_lock.release()
+
+@patch("agents.changelog_agent.get_reports")
+@patch("agents.changelog_agent.fetch_html")
+def test_changelog_agent_fetch_more_pagination(mock_fetch_html, mock_get_reports):
+    from agents.changelog_agent import ChangelogAgent
+    import hashlib
+    items_html = "".join(f"<li>Feature {i}</li>" for i in range(15))
+    mock_fetch_html.return_value = f"<div><h2>Announcements: v1.0.0 - 2026-02-01</h2></div><ul>{items_html}</ul>"
+
+    def fid(i):
+        h = hashlib.sha256(f"Feature {i}".encode("utf-8")).hexdigest()[:8]
+        return f"v1.0.0_{h}"
+
+    # Suppose indices 0..9 and 14 were already processed; indices 10..13 are unprocessed in the middle
+    mock_get_reports.return_value = {fid(i): {} for i in list(range(10)) + [14]}
+    agent = ChangelogAgent()
+    more = agent.get_latest_features(fetch_more=True)
+    assert [f["id"] for f in more] == [fid(10), fid(11), fid(12), fid(13)]

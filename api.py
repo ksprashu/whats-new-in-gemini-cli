@@ -12,11 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 import os
-from fastapi import FastAPI, HTTPException
+import subprocess
+import threading
+from fastapi import FastAPI, HTTPException, Request, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-import subprocess
+from pydantic import BaseModel
+
+logger = logging.getLogger(__name__)
+_sync_lock = threading.Lock()
+SYNC_TIMEOUT_SECONDS = 300
 
 app = FastAPI(title="What's New in Gemini CLI")
 
@@ -84,25 +91,42 @@ def set_report_done(report_id: str, request: Request):
     mark_as_done(report_id)
     return {"status": "success"}
 
-from pydantic import BaseModel
-
 class SyncRequest(BaseModel):
     fetch_more: bool = False
 
 @app.post("/api/sync")
-def sync_changelog(request: Request, sync_req: SyncRequest = SyncRequest()):
+def sync_changelog(request: Request, background_tasks: BackgroundTasks, sync_req: SyncRequest = SyncRequest()):
     verify_admin(request)
-    # Call the main script to sync
+    if not _sync_lock.acquire(blocking=False):
+        raise HTTPException(status_code=409, detail="Synchronization is already in progress.")
+
     cmd = ["python", "main.py", "--check"]
     if sync_req.fetch_more:
         cmd.append("--fetch-more")
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    return {"status": "success", "output": result.stdout, "error": result.stderr}
 
-# Mount static files. We will create a static folder in the next step.
-os.makedirs("static", exist_ok=True)
-# Try to mount, but allow failure if not present yet during dev testing
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+    def run_sync_cmd():
+        try:
+            res = subprocess.run(cmd, capture_output=True, text=True, timeout=SYNC_TIMEOUT_SECONDS)
+            if res.stdout:
+                logger.info("Sync stdout: %s", res.stdout.strip())
+            if res.returncode != 0:
+                logger.error("Sync failed (exit %d): %s", res.returncode, res.stderr.strip())
+            elif res.stderr:
+                logger.warning("Sync stderr: %s", res.stderr.strip())
+        except subprocess.TimeoutExpired:
+            logger.error("Sync command timed out after %d seconds", SYNC_TIMEOUT_SECONDS)
+        except Exception:
+            logger.exception("Unexpected error running sync command")
+        finally:
+            _sync_lock.release()
+
+    background_tasks.add_task(run_sync_cmd)
+    return {"status": "success", "message": "Synchronization started in the background."}
+
+STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
+if not os.path.isdir(STATIC_DIR):
+    os.makedirs(STATIC_DIR, exist_ok=True)
+app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
